@@ -1,21 +1,22 @@
-
-<?php
+<?php 
 class RestKezelo {
-    private $httpVersion = "HTTP/1.1";
-    public function sethttpFejlec($statusKod): void {
-        $statusUzenet = $this -> gethttpStatusUzenet (statuskod: $statuskod);
+	
+	private $httpVersion = "HTTP/1.1";
 
-        header (header: $this->httpVersion." ". $statuskod." ". $statusUzenet);
-        header (header: "Content-Type: Application/json");
-    }
-
-    public function gethttpStatusUzenet ($statuskod): string{
-        $httpStatus = array(
-            200 => 'OK',
-            400 => 'Bad Request',
-            404 => 'Not Found');
-        return ($httpStatus [$statuskod]);
-    }
+	public function sethttpFejlec($statusKod){
+		
+		$statusUzenet = $this -> gethttpStatusUzenet($statusKod);
+		
+		header($this->httpVersion. " ". $statusKod ." ". $statusUzenet);		
+		header("Content-Type: Application/json");
+	}
+	
+	public function gethttpStatusUzenet($statusKod){
+		$httpStatus = array(
+			200 => 'OK',    
+			400 => 'Bad Request',    
+			404 => 'Not Found');   
+		return ($httpStatus[$statusKod]);
+	}
 }
-
 ?>
